@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Design Master Kit — Beginner to Expert (10 Phases)</title>
+  <meta name="description"
+    content="Complete 10-phase System Design learning roadmap from fundamentals to FAANG & Deloitte interview mastery. 585+ curated resources with progress tracking." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ===== STICKY HEADER ===== -->
+  <header class="site-header" id="site-header">
+    <div class="header-top-row">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
+            <line x1="12" y1="2" x2="12" y2="22" />
+            <line x1="2" y1="8.5" x2="22" y2="8.5" />
+          </svg>
+        </div>
+        <div>
+          <div class="logo-name">System Design <span class="logo-accent">Master Kit</span></div>
+          <div class="logo-tagline">10 Phases · Beginner → Expert </div>
+        </div>
+      </div>
+
+      <div class="stats-actions-group">
+        <div class="stats-pill">
+          <span class="stat-dot done-dot"></span>
+          <span>Done:</span>
+          <strong id="count-done">0</strong>
+        </div>
+        <div class="stats-pill">
+          <span class="stat-dot active-dot"></span>
+          <span>Saved:</span>
+          <strong id="count-saved">0</strong>
+        </div>
+        <div class="stats-pill">
+          <span class="stat-dot pending-dot"></span>
+          <span>Left:</span>
+          <strong id="count-pending">0</strong>
+        </div>
+        <button class="btn-icon" id="btn-search-toggle" title="Quick Search (Ctrl+K)">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+        </button>
+        <button class="btn-reset" id="btn-reset-progress" title="Reset or export progress">
+          ↺ Reset
+        </button>
+        <button class="btn-export" id="btn-export-progress" title="Export progress to JSON">
+          ↓ Export
+        </button>
+      </div>
+    </div>
+
+    <div class="progress-bar-container">
+      <div class="progress-bar-label">
+        <span>OVERALL PROGRESS</span>
+        <span id="progress-percent-text">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="global-progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== NAV TABS ===== -->
+  <nav class="nav-tab-wrapper">
+    <button class="tab-scroll-btn left" id="tab-scroll-left" aria-label="Scroll tabs left">‹</button>
+    <div class="nav-tab-container" id="nav-tabs">
+      <button class="nav-tab active" data-tab="roadmap">🗺️ 10-Phase Roadmap</button>
+      <button class="nav-tab" data-tab="building-blocks">🏗️ Building Blocks</button>
+      <button class="nav-tab" data-tab="case-studies">💼 Case Studies</button>
+      <button class="nav-tab" data-tab="cloud-matrix">☁️ Cloud Matrix</button>
+      <button class="nav-tab" data-tab="decision-table">📊 Tech Decision Table</button>
+      <button class="nav-tab" data-tab="testing">🧪 Testing Strategies</button>
+      <button class="nav-tab" data-tab="lld">📐 LLD & Design Patterns</button>
+      <button class="nav-tab" data-tab="interview">🎯 Interview Prep</button>
+      <button class="nav-tab" data-tab="behavioral">💬 Behavioral (STAR)</button>
+      <button class="nav-tab" data-tab="blogs">📰 Engineering Blogs</button>
+      <button class="nav-tab" data-tab="wizard">⚡ Architecture Wizard</button>
+    </div>
+    <button class="tab-scroll-btn right" id="tab-scroll-right" aria-label="Scroll tabs right">›</button>
+  </nav>
+
+  <!-- ===== SEARCH + FILTER BAR ===== -->
+  <div class="filter-subbar">
+    <div class="search-input-box">
+      <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.3-4.3" />
+      </svg>
+      <input type="text" id="global-search" placeholder="Search topics, patterns, companies, tools... (Ctrl+K)" />
+      <span class="search-kbd">Ctrl+K</span>
+    </div>
+    <div class="filter-chips-container" id="filter-chips">
+      <button class="filter-chip active" data-filter="all">All</button>
+      <button class="filter-chip" data-filter="completed">✓ Completed</button>
+      <button class="filter-chip" data-filter="saved">★ Saved</button>
+      <button class="filter-chip" data-filter="Beginner">Beginner</button>
+      <button class="filter-chip" data-filter="Intermediate">Intermediate</button>
+      <button class="filter-chip" data-filter="Advanced">Advanced</button>
+      <button class="filter-chip" data-filter="Expert">Expert</button>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT AREA ===== -->
+  <main id="main-content" class="main-content"></main>
+
+  <!-- ===== CASE STUDY DETAIL MODAL ===== -->
+  <div class="modal-overlay" id="detail-modal" role="dialog" aria-modal="true">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="modal-title">Title</h2>
+          <span class="badge-level" id="modal-level">Level</span>
+        </div>
+        <button class="modal-close-btn" id="modal-close" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-footer">
+        <button class="btn-action-outline" id="modal-bookmark-toggle">☆ Save for Later</button>
+        <button class="btn-action-primary" id="modal-status-toggle">Mark as Completed ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="https://github.com/SoumyaSagarNayak/" target="_blank" rel="noopener">Github</a>
+      <a href="https://www.linkedin.com/in/soumya-sagar-nayak-498352295/" target="_blank" rel="noopener">Linkedin</a>
+      <a href="https://soum-portfolio.vercel.app/" target="_blank" rel="noopener">Portfolio</a>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
