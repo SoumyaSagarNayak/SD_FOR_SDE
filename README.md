@@ -1,7 +1,7 @@
 # 🚀 System Design & LLD Master Learning Kit — 2-Month Master Plan
 
 > **The Ultimate Production & Interview Mastery Framework**  
-> Designed for software engineers preparing for tech interviews (FAANG, Indian Product Companies, Deloitte, Cloud Consultancies) and building production systems at scale.
+> Designed for software engineers preparing for tech interviews and building production systems at scale.
 
 ---
 
